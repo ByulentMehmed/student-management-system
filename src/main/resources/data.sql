@@ -1,0 +1,6 @@
+INSERT INTO STUDENTS (FIRST_NAME, LAST_NAME, GENDER, DATE_OF_BIRTH) VALUES
+	('Alex', 'Wagner', 'M', '1998-04-11'),
+	('Bob', 'Kuran', 'M', '2003-06-15');
+	
+	
+	

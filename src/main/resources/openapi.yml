@@ -1,0 +1,70 @@
+openapi: 3.0.2
+info:
+  title: Student Management System REST API
+  version: 0.0.1-SNAPSHOT
+servers:
+- url: http://localhost:8080
+paths:
+  /students:
+    get:
+      tags:
+      - student
+      summary: Retrieves a list of all students.
+      operationId: getAllStudents
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Student'
+  /students/via-excel-file:
+    get:
+      tags:
+      - student
+      summary: Returns an Excel file of students.
+      operationId: returnStudentsExcelFile
+      responses:
+        200:
+          description: Success
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+    post:
+      tags:
+      - student
+      summary: Uploads an Excel file of students.
+      requestBody:
+        content:
+         application/octet-stream:
+          schema:
+            type: string
+            format: binary
+      operationId: uploadStudentsExcelFile
+      responses:
+        200:
+          description: Success
+components:
+  schemas:
+    Student:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        firstName:
+          type: string
+          example: Alex
+        lastName:
+          type: string
+          example: Wagner
+        gender:
+          type: string
+          example: M
+        dateOfBirth:
+          type: string
+          example: 1/1/01 12:30
